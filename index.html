@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marylene Mbugua | Portfolio</title>
+    <style>
+        .cert-card img {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: badgeEntrance 1.5s ease-out;
+            backface-visibility: hidden;
+        }
+        
+        @keyframes badgeEntrance {
+            0% {
+                transform: rotateY(-180deg) scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: rotateY(0deg) scale(1);
+                opacity: 1;
+            }
+        }
+        /* 2. HOVER INTERACTION: THE 360° SPIN */
+        
+        .cert-card:hover img {
+            transform: rotateY(360deg);
+            /* Full rotation from left to right */
+        }
+        /* 3. CARD LIFT EFFECT */
+        
+        .cert-card {
+            cursor: pointer;
+            perspective: 1000px;
+            /* Gives the rotation a 3D depth */
+        }
+        
+        .cert-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 86, 179, 0.15);
+            border-color: #0056b3;
+            background: #ffffff;
+        }
+        
+        nav {
+            background-color: #ffffff;
+            padding-left: 50%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            height: 60px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        nav a,
+        .dropbtn {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            padding: 15px 20px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+        
+        nav a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: #0056b3;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            /* A soft tech-blue gradient */
+            background: radial-gradient(circle at center, #ffffff 0%, #e0eafc 100%);
+            position: relative;
+            overflow-x: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        /* 2. CREATING THE MOVING DATA STREAM */
+        /* This creates a layer of floating tech terms behind your card */
+        
+        body::before {
+            content: "PYTHON • SQL • POWER BI • XGBOOST • VLAN • PANTAS • SCIPY • 010101 • NETWORKING • FIREWALL • DJANGO • RESRESSION • HTML • CLOUD • ERP • MONITORING • DATA SCIENCE • IT SUPPORT";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 300%;
+            /* Extra wide for the scroll */
+            height: 100%;
+            font-size: 80px;
+            /* Big, bold background text */
+            font-weight: 900;
+            color: rgba(0, 86, 179, 0.03);
+            /* Very subtle so it doesn't distract */
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            z-index: -1;
+            animation: scrollText 40s linear infinite;
+            text-transform: uppercase;
+            letter-spacing: 20px;
+            pointer-events: none;
+        }
+        /* 3. SECOND LAYER MOVING OPPOSITE */
+        
+        body::after {
+            content: "MACHINE LEARNING • CYBERSECURITY • LINUX • UBUNTU • CISCO • DATABASE • TABLEAU • POSTMAN • BIOMETRICS • API • DATA ANALYSIS • SYSTEM ADMIN • ROUTERS • SWITCHES";
+            position: fixed;
+            bottom: 10%;
+            left: -100%;
+            width: 300%;
+            font-size: 60px;
+            font-weight: 900;
+            color: rgba(56, 189, 248, 0.04);
+            white-space: nowrap;
+            z-index: -1;
+            animation: scrollTextReverse 60s linear infinite;
+            text-transform: uppercase;
+            letter-spacing: 15px;
+            pointer-events: none;
+        }
+        
+        @keyframes scrollText {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
+        }
+        
+        @keyframes scrollTextReverse {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(50%);
+            }
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        /* 4. THE GLASS CONTENT CARD */
+        
+        .portfolio-card {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: bright(8px);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            margin: 40px auto;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .portfolio-card {
+                margin: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="#about" style="color: black;">About Me</a>
+        <a href="#skills" style="color: black;">Technical Skills</a>
+        <a href="#experience" style="color: black;">Experience</a>
+        <a href="#projects" style="color: black;">Projects</a>
+        <a href="#certifications" style="color: black;">Certifications</a>
+    </nav>
+    <div class="portfolio-card">
+        <header style="text-align: center; padding: 50px 20px; background: #ffffff; border-bottom: 4px solid #0056b3;">
+            <div style="position: relative; width: 160px; height: 160px; margin: 0 auto 25px auto; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+                <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; padding: 5px; background: conic-gradient(#0056b3, #38bdf8, #0056b3); animation: spin 4s linear infinite;"></div>
+                <img src="WhatsApp Image 2026-03-10 at 10.20.07.jpeg" alt="Marylene Portrait" style="position: relative; width: 150px; height: 150px; border-radius: 50%; border: 4px solid white; object-fit: cover; z-index: 1;">
+            </div>
+
+            <h1 style="margin: 0; color: #0056b3; font-size: 2.4rem;">Marylene Mbugua</h1>
+            <p style="font-size: 1.2rem; font-weight: bold; color: #444; margin: 10px 0;">Data Scientist & Data Analyst & IT Support</p>
+
+            <div style="margin: 20px 0;">
+                <a href="https://github.com/Marylene78" style="text-decoration: none; color: white; background: #333; padding: 10px 20px; border-radius: 5px; margin-right: 10px; display: inline-block;">GitHub</a>
+                <a href="https://linkedin.com/in/marylene-mbugua" style="text-decoration: none; color: white; background: #0077b5; padding: 10px 20px; border-radius: 5px; display: inline-block;">LinkedIn</a>
+            </div>
+
+            <p style="font-style: italic; color: #666;">marylenewaithera@gmail.com | +254717075115</p>
+        </header>
+
+        <section id="about" style="padding: 40px 30px;">
+            <h2 style="color: #0056b3; border-left: 5px solid #0056b3; padding-left: 15px;">About Me</h2>
+            <p style="font-size: 1.05rem; text-align: justify; color: #334155; line-height: 1.6;">
+                I am a <strong>Computer Science professional</strong> with a <strong>Second Class Upper Division</strong> degree from <strong>Karatina University</strong> and a <strong>Distinction</strong> in Computer Applications from <strong>Top Mark Computer College</strong>.
+                I have practical experience in <strong>data science, data analysis, predictive models, and IT support</strong>.
+            </p>
+            <p style="font-size: 1.05rem; text-align: justify; color: #334155; line-height: 1.6;">
+                I am comfortable working with large datasets to draw assumptions from created predictive models and from analyzing data. Having worked on several data science projects to enhance my skills and experience, I am proficient with model deployment and skilled
+                at analyzing data to find important trends and documenting key findings to show exactly what the data means.
+            </p>
+            <p style="font-size: 1.05rem; text-align: justify; color: #334155; line-height: 1.6;">
+                Additionally, I am proficient in diagnosing and resolving hardware, software, and network issues, supporting ERP platforms, managing user accounts, backups, and system updates, and ensuring secure, reliable IT infrastructure. I am experienced in LAN/WAN
+                troubleshooting, IP configuration (DHCP, DNS), firewall monitoring, and front-end web technologies, with a strong ability to maintain system uptime and operational efficiency. My goal is to use my analytical mindset to provide clear insights,
+                help improve decision-making, and support organizational growth.
+            </p>
+        </section>
+
+        <section id="skills" style="padding: 40px 30px; background-color: #fcfcfc;">
+            <h2 style="color: #0056b3; border-left: 5px solid #0056b3; padding-left: 15px; margin-bottom: 30px;">Technical Skills</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+
+                <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 4px solid #0056b3;">
+                    <h4 style="margin-top: 0; color: #333;">Data Science & Analytics</h4>
+                    <ul style="padding-left: 18px; font-size: 0.9rem; color: #444; line-height: 1.6;">
+                        <li><strong>Languages:</strong> Python (NumPy, Pandas, Matplotlib, Seaborn, Scikit-learn, SciPy, Statsmodels, Plotly, Pickle), SQL</li>
+                        <li><strong>Models:</strong> Random Forests, Linear/Logistic Regression, XGBoost, Supervised/Unsupervised Learning</li>
+                        <li><strong>Workflow:</strong> Feature Engineering, Outlier Handling, Model Validation, Fast API Deployment</li>
+                        <li><strong>Tools:</strong> Power BI, Excel, Google Colab, Tableau, Jupyter Notebook, Postman</li>
+                        <li><strong>Data Management:</strong>MySQL, PostgreSQL, MongoDB. </li>
+                    </ul>
+                </div>
+
+                <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 4px solid #0056b3;">
+                    <h4 style="margin-top: 0; color: #333;">Networking & Systems</h4>
+                    <ul style="padding-left: 18px; font-size: 0.9rem; color: #444; line-height: 1.6;">
+                        <li><strong>Networking:</strong> Server/Router configuration, LAN/WAN Troubleshooting, Cat5/Cat6 Termination, Printer Networking switch and access point configuration</li>
+                        <li><strong>Protocols:</strong> TCP/IP, OSI Model, DHCP\static IP addressing,DNS, Network Segmentation & OSI model</li>
+                        <li><strong>Security:</strong> Firewall Management (pfSense),Antivirus Deployment</li>
+                        <li><strong>Monitoring:</strong> Winbox, Cisco Packet Tracer, Network Optimization</li>
+                    </ul>
+                </div>
+
+                <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 4px solid #0056b3;">
+                    <h4 style="margin-top: 0; color: #333;">Admin, Web & Support</h4>
+                    <ul style="padding-left: 18px; font-size: 0.9rem; color: #444; line-height: 1.6;">
+                        <li><strong>OS:</strong> Windows, Linux & Ubuntu Server Administration</li>
+                        <li><strong>Enterprise:</strong> ERP Systems, Microsoft Dynamics 365, CRM, Billing & Biometric Systems</li>
+                        <li><strong>Web:</strong> HTML, CSS, JS, Django, WordPress, Bootstrap</li>
+                        <li><strong>Support:</strong> user management, backups and recovery (TrueNAS), hardware diagnostics, laptop/computer upgrades, antivirus deployment, system monitoring and maintenance & IP Phone Troubleshooting</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="certifications" style="padding: 60px 30px; background-color: #ffffff;">
+            <h2 style="color: #0056b3; border-left: 5px solid #0056b3; padding-left: 15px; margin-bottom: 40px;">Professional Certifications</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+
+                <div class="cert-card" style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; text-align: center; background: #f8fafc; transition: all 0.3s ease;">
+                    <img src="networking-basics.png" alt="networking" style="height: 100px; margin-bottom: 15px; object-fit: contain;">
+                    <h4 style="margin: 0; color: #1e293b; font-size: 1.1rem;">Networking Basics</h4>
+                    <a href="https://www.credly.com/earner/earned/badge/c2f9ec66-2f36-495d-84df-144014856a34" target="_blank" style="text-decoration: none; color: #0056b3; font-weight: italic; font-size: 0.85rem;  padding: 5px 15px;">Credential URL</a>
+                    <p style="margin: 0; font-size: 0.85rem; color: #64748b;">Cisco</p>
+                </div>
+
+
+                <div class="cert-card" style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; text-align: center; background: #f8fafc; transition: all 0.3s ease;">
+                    <img src="applied-data-science-lab.2.png" alt="data" style="height: 100px; margin-bottom: 15px; object-fit: contain;">
+                    <h4 style="margin: 0; color: #1e293b; font-size: 1.1rem;">Applied Data Science Lab</h4>
+                    <a href="https://www.credly.com/earner/earned/badge/bccb6830-2f52-4b2c-8979-7a00181006c7" target="_blank" style="text-decoration: none; color: #0056b3; font-weight: italic; font-size: 0.85rem;  padding: 5px 15px;">Credential URL</a>
+                    <p style="margin: 0; font-size: 0.85rem; color: #64748b;">WorldQuant University</p>
+                </div>
+
+
+                <div class="cert-card" style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; text-align: center; background: #f8fafc; transition: all 0.3s ease;">
+                    <img src="data-analytics-essentials.png" alt="data" style="height: 100px; margin-bottom: 15px; object-fit: contain;">
+                    <h4 style="margin: 0; color: #1e293b; font-size: 1.1rem;">Data Analysis Essentials</h4>
+                    <a href="https://www.credly.com/earner/earned/badge/77b8088b-513a-4cee-9ee5-2512ac12174f" target="_blank" style="text-decoration: none; color: #0056b3; font-weight: italic; font-size: 0.85rem;  padding: 5px 15px;">Credential URL</a>
+                    <p style="margin: 0; font-size: 0.85rem; color: #64748b;">Cisco</p>
+                </div>
+                <div class="cert-card" style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; text-align: center; background: #f8fafc; transition: all 0.3s ease;">
+                    <img src="introduction-to-cybersecurity.png" alt="data" style="height: 100px; margin-bottom: 15px; object-fit: contain;">
+                    <h4 style="margin: 0; color: #1e293b; font-size: 1.1rem;">Introduction to Cybersecurity</h4>
+                    <a href="https://www.credly.com/earner/earned/badge/4f2ee3bc-22e7-449d-82e4-236c613d9a3e" target="_blank" style="text-decoration: none; color: #0056b3; font-weight: italic; font-size: 0.85rem;  padding: 5px 15px;">Credential URL</a>
+                    <p style="margin: 0; font-size: 0.85rem; color: #64748b;">Cisco</p>
+                </div>
+                <div class="cert-card" style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; text-align: center; background: #f8fafc; transition: all 0.3s ease;">
+                    <img src="introduction-to-modern-ai.png" alt="data" style="height: 100px; margin-bottom: 15px; object-fit: contain;">
+                    <h4 style="margin: 0; color: #1e293b; font-size: 1.1rem;">Introduction to modern AI</h4>
+                    <a href="https://www.credly.com/earner/earned/badge/c2a88651-7c6f-4d64-8f85-b3d1535beeaa" target=" _blank " style="text-decoration: none; color: #0056b3; font-weight: italic; font-size: 0.85rem; padding: 5px 15px; ">Credential URL</a>
+                    <p style="margin: 0; font-size: 0.85rem; color: #64748b; ">Cisco</p>
+                </div>
+                <div class="cert-card" style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; text-align: center; background: #f8fafc; transition: all 0.3s ease;">
+                    <img src="network-technician-career-path.png" alt="data" style="height: 100px; margin-bottom: 15px; object-fit: contain;">
+                    <h4 style="margin: 0; color: #1e293b; font-size: 1.1rem;">Network Technician Career Path</h4>
+                    <a href="https://www.credly.com/earner/earned/badge/ece67243-384c-4640-8a24-fbc7de5d89a8" target=" _blank " style="text-decoration: none; color: #0056b3; font-weight: italic; font-size: 0.85rem; padding: 5px 15px; ">Credential URL</a>
+                    <p style="margin: 0; font-size: 0.85rem; color: #64748b; ">Cisco</p>
+                </div>
+        </section>
+
+
+
+
+        <section id="experience" style="padding: 60px 30px; background-color: #ffffff; border-bottom: 1px solid #eee; ">
+            <h2 style="color: #0056b3; border-left: 5px solid #0056b3; padding-left: 15px; margin-bottom: 40px; ">Work Experience</h2>
+
+            <div style="position: relative; border-left: 2px solid #e0eafc; margin-left: 20px; padding-left: 30px; ">
+                <div style="margin-bottom: 50px; position: relative;">
+                    <div style="position: absolute; left: -41px; top: 0; width: 20px; height: 20px; background: #0056b3; border-radius: 50%; border: 4px solid #fff;"></div>
+                    <h3 style="margin: 0; color: #333;">ICT & Data Analyst (Intern)</h3>
+                    <p style="margin: 5px 0; font-weight: bold; color: #0056b3;">Mathira Water & Sanitation Company | June 2025 – Nov 2025</p>
+
+                    <ul style="padding-left: 20px; color: #444; line-height: 1.7; font-size: 0.95rem;">
+                        <li><strong>Revenue & Collection Analytics:</strong> Built <strong>Power BI Dashboards</strong> to track "Collection Efficiency" and Accounts Receivable, identifying long-overdue bills and categorizing customers by payment risk to
+                            prioritize collection efforts.</li>
+                        <li><strong>Predictive Modeling:</strong> Developed <strong>Regression Models</strong> to forecast "Non-Revenue Water" by analyzing correlations between customer registration and consumption patterns.</li>
+                        <li><strong>Business Intelligence:</strong> Automated <strong>Biometric Attendance Analysis</strong> via Power BI to track employee punctuality and regional performance trends across different geographic zones.</li>
+                        <li><strong>Data Engineering:</strong> Managed large-scale data collection, cleaning, and transformation using <strong>SQL and PgAdmin</strong> to ensure high-quality datasets for management reporting.</li>
+
+                        <li><strong>Systems Administration:</strong> Managed <strong>Microsoft Dynamics 365 and ERP-billing system</strong> and CRM platforms to streamline billing, while configuring servers and monitoring databases to ensure 99.9% system
+                            uptime.
+                        </li>
+                        <li><strong>Network Security:</strong> Optimized infrastructure using <strong>pfSense firewalls</strong> and configured <strong>VLANs</strong> to ensure secure and efficient flow of information across the organization.</li>
+                        <li><strong>Strategic Reporting:</strong> Translated complex technical findings into actionable monthly insights for management to improve decision-making and operational growth.</li>
+                        <li><strong>Systems Support:</strong> Performed full Windows installation, repair, and Office suite activation for organizational workstations, ensuring software compliance and stability.</li>
+                        <li><strong>Data Continuity:</strong> Managed automated Data Backups and secured file sharing across the local network using TrueNAS, preventing data loss for critical departments.</li>
+                        <li><strong>Hardware Lifecycle:</strong> Executed hardware repairs and performance upgrades(RAM, SSD, Motherboard diagnostics) to extend the lifespan of IT assets and reduce downtime.</li>
+
+                        <li><strong>User Administration:</strong> Managed user accounts and access permissions within Microsoft Dynamics 365 and ERP to ensure secure and efficient business workflows.</li>
+                        <li><strong>Network Operations:</strong> Diagnosed and resolved LAN/WAN connectivity issues, performing IP configuration (DHCP, DNS) and monitoring secure data transmission.</li>
+
+                        <li><strong>ERP Integration:</strong> Supported and maintained ERP tools to integrate and streamline daily business processes, significantly enhancing operational efficiency.</li>
+                        <li><strong>Database Monitoring:</strong> Monitored organization databases and networks using Winbox and specialized tools to ensure the secure and efficient flow of information.</li>
+                        <li><strong>Technical Troubleshooting:</strong> Served as the primary point of contact for resolving complex hardware, software, and system-related issues for over 50+ organization users.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-bottom: 50px; position: relative; ">
+                    <div style="position: absolute; left: -41px; top: 0; width: 20px; height: 20px; background: #0056b3; border-radius: 50%; border: 4px solid #fff; "></div>
+                    <h3 style="margin: 0; color: #333; ">ICT Trainee</h3>
+                    <p style="margin: 5px 0; font-weight: bold; color: #0056b3; ">Mathira Water & Sanitation Company | May 2024 – July 2024</p>
+                    <ul style="padding-left: 20px; color: #444; line-height: 1.7; font-size: 0.95rem; ">
+                        <li>Supported and maintained <strong>ERP systems</strong> to ensure smooth daily operations and improved integration of business processes.</li>
+                        <li>Performed <strong>system administration</strong> tasks across Windows and Linux environments, including server configuration, monitoring, updates, and uptime management.</li>
+                        <li>Administered <strong>user accounts, permissions, and access controls</strong> while enforcing system security policies.</li>
+                        <li>Supported <strong>software installations, updates, and patch management</strong> to maintain system stability and performance.</li>
+                        <li>Assisted in <strong>network administration</strong> by troubleshooting connectivity issues, monitoring network performance, and ensuring secure data transmission.</li>
+                        <li>Provided <strong>technical support</strong> to users by diagnosing and resolving hardware, software, and system-related issues efficiently.</li>
+                        <li>Managed <strong>Windows installation and repair</strong>, Office suite activations, and hardware upgrades to ensure workstation reliability.</li>
+                        <li>Implemented <strong>data backup solutions</strong> and network-shared storage using <strong>TrueNAS</strong> to safeguard organizational information.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-bottom: 20px; position: relative; ">
+                    <div style="position: absolute; left: -41px; top: 0; width: 20px; height: 20px; background: #0056b3; border-radius: 50%; border: 4px solid #fff; "></div>
+                    <h3 style="margin: 0; color: #333; ">Front-end Web Developer</h3>
+                    <p style="margin: 5px 0; font-weight: bold; color: #0056b3; ">Nord Vision | Sept 2023</p>
+                    <ul style="padding-left: 20px; color: #444; line-height: 1.7; font-size: 0.95rem; ">
+                        <li>Led development and maintenance of a <strong>responsive, user-friendly front-end</strong> using HTML, CSS, and JavaScript.</li>
+                        <li>Enhanced <strong>UI/UX design</strong> and optimized performance across mobile and desktop devices.</li>
+                        <li>Collaborated with designers and developers to integrate front-end components seamlessly.</li>
+                    </ul>
+                </div>
+                <section id="projects" style="padding: 60px 30px; background-color: #f8fafc; ">
+                    <h2 style="color: #0056b3; border-left: 5px solid #0056b3; padding-left: 15px; margin-bottom: 40px; ">Featured Projects</h2>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; ">
+
+                        <div>
+                            <h3 style="text-align: center; color: #334155; margin-bottom: 20px; border-bottom: 2px solid #0056b3; padding-bottom: 10px; ">Data Science Projects</h3>
+
+                            <div style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; overflow: hidden; border: 1px solid #e2e8f0; ">
+
+                                <div style="padding: 20px; ">
+                                    <h4 style="margin: 0 0 10px 0; color: #0056b3; ">Loan approval Prediction</h4>
+                                    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px; ">
+                                        Developed an end-to-end predictive system to assess credit risk and determine loan eligibility. The project involved extensive Exploratory Data Analysis (EDA), feature engineering, and the implementation of Random Forest and XGBoost classifiers. I utilized
+                                        Pickle for model serialization and FastAPI to create a scalable endpoint for real-time predictions, ensuring a seamless bridge between data science and production-ready software. </p>
+                                    <a href="https://github.com/Marylene78/loan.git " target="_blank " style="text-decoration: none; color: #0056b3; font-weight: bold; font-size: 0.85rem; border: 1px solid #0056b3; padding: 5px 15px; border-radius:
+                        5px; ">Read More (GitHub) ↗</a>
+                                </div>
+                            </div>
+                            <div style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; overflow: hidden; border: 1px solid #e2e8f0; ">
+
+                                <div style="padding: 20px; ">
+                                    <h4 style="margin: 0 0 10px 0; color: #0056b3; ">Used car price prediction</h4>
+                                    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px; ">
+                                        This project is a machine learning-based web application that predicts the price of a used car based on various features like year, mileage, engine size, number of doors, fuel type, and previous owners. The model is trained using XGBoost, which provides
+                                        highly accurate predictions.
+                                    </p>
+                                    <a href="https://github.com/Marylene78/used-car-price-prediction-.git " target="_blank " style="text-decoration: none; color: #0056b3; font-weight: bold; font-size: 0.85rem; border: 1px solid #0056b3; padding: 5px
+                        15px; border-radius: 5px; ">Read More (GitHub) ↗</a>
+                                </div>
+                            </div>
+                            <div style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; overflow: hidden; border: 1px solid #e2e8f0; ">
+
+                                <div style="padding: 20px; ">
+                                    <h4 style="margin: 0 0 10px 0; color: #0056b3; ">Medical Insurance prediction</h4>
+                                    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px; ">
+                                        Medical Insurance Price Prediction The Medical Insurance Price Prediction project is a machine learning model designed to estimate insurance costs based on key personal and lifestyle factors. This project uses a dataset containing information on BMI (Body
+                                        Mass Index), smoking status, and the number of children, among other features. By analyzing these variables, the model predicts insurance premiums, helping individuals and insurers make data-driven decisions
+                                    </p>
+                                    <a href="https://github.com/Marylene78/medical-insurance-price-prediction-.git " target="_blank " style="text-decoration: none; color: #0056b3; font-weight: bold; font-size: 0.85rem; border: 1px solid #0056b3; padding:
+                        5px 15px; border-radius: 5px; ">Read More (GitHub) ↗</a>
+                                </div>
+                            </div>
+                            <div style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; overflow: hidden; border: 1px solid #e2e8f0; ">
+
+                                <div style="padding: 20px; ">
+                                    <h4 style="margin: 0 0 10px 0; color: #0056b3; ">Websites projects</h4>
+                                    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px; ">
+                                        Websites projects
+                                    </p>
+                                    <a href="https://github.com/Marylene78/Expo-web-site.git " target=" _blank " style="text-decoration: none; color: #0056b3; font-weight: bold; font-size: 0.85rem; border: 1px solid #0056b3; padding: 5px 15px; border-radius:
+                        5px; ">Read More (GitHub) ↗</a>
+                                    <a href="https://github.com/Marylene78/nordvision-web.git " target=" _blank " style="text-decoration: none; color: #0056b3; font-weight: bold; font-size: 0.85rem; border: 1px solid #0056b3; padding: 5px 15px; border-radius:
+                        5px; ">Read More (GitHub) ↗</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 style="text-align: center; color: #334155; margin-bottom: 20px; border-bottom: 2px solid #0056b3; padding-bottom: 10px; ">Data Analysis Projects</h3>
+
+                            <div style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; overflow: hidden; border: 1px solid #e2e8f0; ">
+                                <img src="sales.jpeg " alt="Power BI Dashboard " style="width: 100%; height: 200px; object-fit: cover; background-color: #eee; ">
+                                <div style="padding: 20px; ">
+                                    <h4 style="margin: 0 0 10px 0; color: #0056b3; ">Sales Executive Dashboard</h4>
+                                    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px; ">
+                                        This project involves the creation of a Power BI dashboard to evaluate global sales performance for a chocolate manufacturer. The analysis processes transactional data to identify key revenue drivers, regional market trends, and sales representative effectiveness.
+                                        The final output is an interactive single-page report that translates raw data into strategic business intelligence.
+                                    </p>
+                                    <a href="https://github.com/Marylene78/Sales-Executive-Dashboard-chocolate-sales.git " target="_blank " style="text-decoration: none; color: #0056b3; font-weight: bold; font-size: 0.85rem; border: 1px solid #0056b3;
+                        padding: 5px 15px; border-radius: 5px; ">Read More (GitHub) ↗</a>
+                                </div>
+                            </div>
+                            <div style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; overflow: hidden; border: 1px solid #e2e8f0; ">
+                                <img src="Hosi .jpeg " alt="Power BI Dashboard " style="width: 100%; height: 200px; object-fit: cover; background-color: #eee; ">
+                                <div style="padding: 20px; ">
+                                    <h4 style="margin: 0 0 10px 0; color: #0056b3; ">Hospital Data analysis</h4>
+                                    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px; ">
+                                        This dashboard transforms raw hospital visit data into clear, actionable visuals. Designed with intuitive slicers/filters for date range, county, and diagnosis — perfect for quick exploration and performance monitoring.
+                                    </p>
+                                    <a href="https://github.com/Marylene78/Hospital-data-analysis.git " target="_blank " style="text-decoration: none; color: #0056b3; font-weight: bold; font-size: 0.85rem; border: 1px solid #0056b3; padding: 5px 15px;
+                        border-radius: 5px; ">Read More (GitHub) ↗</a>
+                                </div>
+                            </div>
+                            <div style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; overflow: hidden; border: 1px solid #e2e8f0; ">
+                                <img src="Movie.jpeg " alt="Power BI Dashboard " style="width: 100%; height: 200px; object-fit: cover; background-color: #eee; ">
+                                <div style="padding: 20px; ">
+                                    <h4 style="margin: 0 0 10px 0; color: #0056b3; ">Movie Revenue VS Budget- TABLEAU</h4>
+                                    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px; ">
+                                        This dashboard compares the budget allocated for the movie and the revenue generated. Majorly shows the movie that did the best.
+                                    </p>
+                                    <a href="https://public.tableau.com/app/profile/marylene.mbugua/viz/MovieBudgetVsrevenue/Sheet1 " target="_blank " style="text-decoration: none; color: #0056b3; font-weight: bold; font-size: 0.85rem; border: 1px solid
+                        #0056b3; padding: 5px 15px; border-radius: 5px; ">Read More (GitHub) ↗</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        </div>
+</body>
+<footer style="padding: 40px 20px; background-color: #334155; color: #f8fafc; text-align: center; ">
+    <h3 style="color: #38bdf8; margin-bottom: 10px; ">Let's Connect</h3>
+    <p style="margin-bottom: 20px; opacity: 0.8; font-size: 0.95rem; ">Available for Data Science, Analytics, and ICT Infrastructure opportunities.</p>
+    <div style="margin-bottom: 25px; ">
+        <a href="mailto:marylenewaithera@gmail.com " style="color: white; margin: 0 10px; text-decoration: none; ">Email</a> |
+        <a href="https://linkedin.com/in/marylene-mbugua " style="color: white; margin: 0 10px; text-decoration: none; ">LinkedIn</a> |
+        <a href="https://github.com/Marylene78 " style="color: white; margin: 0 10px; text-decoration: none; ">GitHub</a>
+    </div>
+    <p style="font-size: 0.8rem; opacity: 0.6; ">&copy; 2026 Marylene Mbugua | B.Sc. Computer Science (Second Class Upper), Karatina University</p>
+</footer>
+
+</html>
