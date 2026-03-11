@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -43,39 +43,85 @@
             background: #ffffff;
         }
         
-        nav {
-            background-color: #ffffff;
-            padding-left: 50%;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            height: 60px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-        
-        nav a,
-        .dropbtn {
-            color: rgb(255, 255, 255);
-            text-decoration: none;
-            padding: 15px 20px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            display: inline-block;
-        }
-        
-        nav a:hover,
-        .dropdown:hover .dropbtn {
-            background-color: #0056b3;
-        }
-         @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                padding-left: 300px;
-            }
-        }
+      /* --- Desktop Navigation (Default) --- */
+nav {
+    background-color: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center; /* Centers the links on desktop */
+    align-items: center;
+    height: 60px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Base styles for links */
+nav a {
+    color: #0056b3; /* Changed to blue since background is white */
+    text-decoration: none;
+    padding: 15px 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background-color: #f0f0f0;
+    color: #003d82;
+}
+
+/* Hide the hamburger icon on desktop */
+.menu-icon {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 15px;
+}
+
+.menu-icon span {
+    width: 25px;
+    height: 3px;
+    background-color: #0056b3;
+    border-radius: 2px;
+}
+
+/* --- Mobile Navigation (The "Hamburger" Logic) --- */
+@media (max-width: 768px) {
+    nav {
+        justify-content: space-between; /* Icon on one side */
+        padding: 0 20px;
+        height: auto; /* Allow nav to grow when menu opens */
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu-icon {
+        display: flex; /* Show three lines on phone */
+        align-self: flex-start;
+    }
+
+    .nav-links {
+        display: none; /* Hidden by default */
+        flex-direction: column;
+        width: 100%;
+        background-color: #ffffff;
+    }
+
+    /* When JavaScript adds the 'active' class */
+    .nav-links.active {
+        display: flex;
+    }
+
+    nav a {
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+        border-top: 1px solid #eee;
+        color: #0056b3;
+    }
+}
         body {
             margin: 0;
             padding: 0;
@@ -173,22 +219,43 @@
                 margin: 15px;
             }
         }
-        h1, h2, p {
+        @media (max-width: 768px) {
+    /* This forces the grid to 1 column and removes the 450px minimum */
+    .project-grid {
+        grid-template-columns: 1fr !important; 
+        padding: 0 !important;
+    }
+
+    /* This ensures the individual project boxes don't overflow */
+    .project-grid > div {
         width: 100% !important;
-        text-align: center !important;
+        min-width: unset !important;
     }
     
+    /* Extra fix for the "Loan approval" text and cards */
+    section#projects {
+        padding: 50px 15px !important; /* Reduces side padding so text has more room */
+    }
+}
     </style>
 </head>
 
 <body>
-    <nav>
-        <a href="#about" style="color: black;">About Me</a>
-        <a href="#skills" style="color: black;">Technical Skills</a>
-        <a href="#experience" style="color: black;">Experience</a>
-        <a href="#projects" style="color: black;">Projects</a>
-        <a href="#certifications" style="color: black;">Certifications</a>
-    </nav>
+  <nav>
+    <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="nav-links" id="navLinks">
+        <a href="#about" onclick="toggleMenu()">About Me</a>
+        <a href="#skills" onclick="toggleMenu()">Technical Skills</a>
+        <a href="#experience" onclick="toggleMenu()">Experience</a>
+        <a href="#projects" onclick="toggleMenu()">Projects</a>
+        <a href="#certifications" onclick="toggleMenu()">Certifications</a>
+    </div>
+</nav>
     <div class="portfolio-card">
         <header style="text-align: center; padding: 50px 20px; background: #ffffff; border-bottom: 4px solid #0056b3;">
             <div style="position: relative; width: 160px; height: 160px; margin: 0 auto 25px auto; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
@@ -201,12 +268,10 @@
 
             <div style="margin: 20px 0;">
                 <a href="https://github.com/Marylene78" style="text-decoration: none; color: white; background: #333; padding: 10px 20px; border-radius: 5px; margin-right: 10px; display: inline-block;">GitHub</a>
-                <a href="https://www.linkedin.com/in/marylene-mbugua-885222244/" style="text-decoration: none; color: white; background: #0077b5; padding: 10px 20px; border-radius: 5px; display: inline-block;">LinkedIn</a>
+                <a href="https://linkedin.com/in/marylene-mbugua" style="text-decoration: none; color: white; background: #0077b5; padding: 10px 20px; border-radius: 5px; display: inline-block;">LinkedIn</a>
             </div>
-<p style="margin: 5px 0; color: #444;">
-    Email: <a href="mailto:marylenewaithera@gmail.com" style="color: #0056b3; text-decoration: none; font-weight: 500;">marylenewaithera@gmail.com</a>
-</p>
-            <p style="font-style: italic; color: #666;"> +254717075115</p>
+
+            <p style="font-style: italic; color: #666;">marylenewaithera@gmail.com | +254717075115</p>
         </header>
 
         <section id="about" style="padding: 40px 30px;">
@@ -271,7 +336,7 @@
                 <div class="cert-card" style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; text-align: center; background: #f8fafc; transition: all 0.3s ease;">
                     <img src="networking-basics.png" alt="networking" style="height: 100px; margin-bottom: 15px; object-fit: contain;">
                     <h4 style="margin: 0; color: #1e293b; font-size: 1.1rem;">Networking Basics</h4>
-                    <a href="https://www.credly.com/badges/c2f9ec66-2f36-495d-84df-144014856a34/public_url" target="_blank" style="text-decoration: none; color: #0056b3; font-weight: italic; font-size: 0.85rem;  padding: 5px 15px;">Credential URL</a>
+                    <a href="https://www.credly.com/earner/earned/badge/c2f9ec66-2f36-495d-84df-144014856a34" target="_blank" style="text-decoration: none; color: #0056b3; font-weight: italic; font-size: 0.85rem;  padding: 5px 15px;">Credential URL</a>
                     <p style="margin: 0; font-size: 0.85rem; color: #64748b;">Cisco</p>
                 </div>
 
@@ -279,7 +344,7 @@
                 <div class="cert-card" style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; text-align: center; background: #f8fafc; transition: all 0.3s ease;">
                     <img src="applied-data-science-lab.2.png" alt="data" style="height: 100px; margin-bottom: 15px; object-fit: contain;">
                     <h4 style="margin: 0; color: #1e293b; font-size: 1.1rem;">Applied Data Science Lab</h4>
-                    <a href="https://www.credly.com/badges/bccb6830-2f52-4b2c-8979-7a00181006c7/public_url" target="_blank" style="text-decoration: none; color: #0056b3; font-weight: italic; font-size: 0.85rem;  padding: 5px 15px;">Credential URL</a>
+                    <a href="https://www.credly.com/earner/earned/badge/bccb6830-2f52-4b2c-8979-7a00181006c7" target="_blank" style="text-decoration: none; color: #0056b3; font-weight: italic; font-size: 0.85rem;  padding: 5px 15px;">Credential URL</a>
                     <p style="margin: 0; font-size: 0.85rem; color: #64748b;">WorldQuant University</p>
                 </div>
 
@@ -287,25 +352,25 @@
                 <div class="cert-card" style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; text-align: center; background: #f8fafc; transition: all 0.3s ease;">
                     <img src="data-analytics-essentials.png" alt="data" style="height: 100px; margin-bottom: 15px; object-fit: contain;">
                     <h4 style="margin: 0; color: #1e293b; font-size: 1.1rem;">Data Analysis Essentials</h4>
-                    <a href="https://www.credly.com/badges/77b8088b-513a-4cee-9ee5-2512ac12174f/public_url" target="_blank" style="text-decoration: none; color: #0056b3; font-weight: italic; font-size: 0.85rem;  padding: 5px 15px;">Credential URL</a>
+                    <a href="https://www.credly.com/earner/earned/badge/77b8088b-513a-4cee-9ee5-2512ac12174f" target="_blank" style="text-decoration: none; color: #0056b3; font-weight: italic; font-size: 0.85rem;  padding: 5px 15px;">Credential URL</a>
                     <p style="margin: 0; font-size: 0.85rem; color: #64748b;">Cisco</p>
                 </div>
                 <div class="cert-card" style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; text-align: center; background: #f8fafc; transition: all 0.3s ease;">
                     <img src="introduction-to-cybersecurity.png" alt="data" style="height: 100px; margin-bottom: 15px; object-fit: contain;">
                     <h4 style="margin: 0; color: #1e293b; font-size: 1.1rem;">Introduction to Cybersecurity</h4>
-                    <a href="https://www.credly.com/badges/4f2ee3bc-22e7-449d-82e4-236c613d9a3e/public_url" target="_blank" style="text-decoration: none; color: #0056b3; font-weight: italic; font-size: 0.85rem;  padding: 5px 15px;">Credential URL</a>
+                    <a href="https://www.credly.com/earner/earned/badge/4f2ee3bc-22e7-449d-82e4-236c613d9a3e" target="_blank" style="text-decoration: none; color: #0056b3; font-weight: italic; font-size: 0.85rem;  padding: 5px 15px;">Credential URL</a>
                     <p style="margin: 0; font-size: 0.85rem; color: #64748b;">Cisco</p>
                 </div>
                 <div class="cert-card" style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; text-align: center; background: #f8fafc; transition: all 0.3s ease;">
                     <img src="introduction-to-modern-ai.png" alt="data" style="height: 100px; margin-bottom: 15px; object-fit: contain;">
                     <h4 style="margin: 0; color: #1e293b; font-size: 1.1rem;">Introduction to modern AI</h4>
-                    <a href="https://www.credly.com/badges/c2a88651-7c6f-4d64-8f85-b3d1535beeaa/public_url" target=" _blank " style="text-decoration: none; color: #0056b3; font-weight: italic; font-size: 0.85rem; padding: 5px 15px; ">Credential URL</a>
+                    <a href="https://www.credly.com/earner/earned/badge/c2a88651-7c6f-4d64-8f85-b3d1535beeaa" target=" _blank " style="text-decoration: none; color: #0056b3; font-weight: italic; font-size: 0.85rem; padding: 5px 15px; ">Credential URL</a>
                     <p style="margin: 0; font-size: 0.85rem; color: #64748b; ">Cisco</p>
                 </div>
                 <div class="cert-card" style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; text-align: center; background: #f8fafc; transition: all 0.3s ease;">
                     <img src="network-technician-career-path.png" alt="data" style="height: 100px; margin-bottom: 15px; object-fit: contain;">
                     <h4 style="margin: 0; color: #1e293b; font-size: 1.1rem;">Network Technician Career Path</h4>
-                    <a href="https://www.credly.com/badges/ece67243-384c-4640-8a24-fbc7de5d89a8/public_url" target=" _blank " style="text-decoration: none; color: #0056b3; font-weight: italic; font-size: 0.85rem; padding: 5px 15px; ">Credential URL</a>
+                    <a href="https://www.credly.com/earner/earned/badge/ece67243-384c-4640-8a24-fbc7de5d89a8" target=" _blank " style="text-decoration: none; color: #0056b3; font-weight: italic; font-size: 0.85rem; padding: 5px 15px; ">Credential URL</a>
                     <p style="margin: 0; font-size: 0.85rem; color: #64748b; ">Cisco</p>
                 </div>
         </section>
@@ -373,6 +438,7 @@
                         <li>Collaborated with designers and developers to integrate front-end components seamlessly.</li>
                     </ul>
                 </div>
+                <div class="project-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px;">
                 <section id="projects" style="padding: 60px 30px; background-color: #f8fafc; ">
                     <h2 style="color: #0056b3; border-left: 5px solid #0056b3; padding-left: 15px; margin-bottom: 40px; ">Featured Projects</h2>
 
@@ -476,6 +542,12 @@
         </section>
 
         </div>
+        <script>
+function toggleMenu() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.toggle('active');
+}
+</script>
 </body>
 <footer style="padding: 40px 20px; background-color: #334155; color: #f8fafc; text-align: center; ">
     <h3 style="color: #38bdf8; margin-bottom: 10px; ">Let's Connect</h3>
@@ -488,12 +560,4 @@
     <p style="font-size: 0.8rem; opacity: 0.6; ">&copy; 2026 Marylene Mbugua | B.Sc. Computer Science (Second Class Upper), Karatina University</p>
 </footer>
 
-
 </html>
-
-
-
-
-
-
-
