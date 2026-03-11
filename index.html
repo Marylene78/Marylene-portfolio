@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -219,22 +219,60 @@ nav a:hover {
                 margin: 15px;
             }
         }
-        @media (max-width: 768px) {
-    /* This forces the grid to 1 column and removes the 450px minimum */
-    .project-grid {
-        grid-template-columns: 1fr !important; 
-        padding: 0 !important;
-    }
+        
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
 
-    /* This ensures the individual project boxes don't overflow */
-    .project-grid > div {
-        width: 100% !important;
-        min-width: unset !important;
+.project-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 25px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background-color: #eee;
+}
+
+.column-title {
+    text-align: center; 
+    color: #334155; 
+    margin-bottom: 20px; 
+    border-bottom: 2px solid #0056b3; 
+    padding-bottom: 10px;
+}
+
+.read-more {
+    text-decoration: none; 
+    color: #0056b3; 
+    font-weight: bold; 
+    font-size: 0.85rem; 
+    border: 1px solid #0056b3; 
+    padding: 5px 15px; 
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: 1fr !important;
     }
-    
-    /* Extra fix for the "Loan approval" text and cards */
-    section#projects {
-        padding: 50px 15px !important; /* Reduces side padding so text has more room */
+    .project-card {
+        margin-bottom: 20px;
     }
 }
     </style>
@@ -438,110 +476,75 @@ nav a:hover {
                         <li>Collaborated with designers and developers to integrate front-end components seamlessly.</li>
                     </ul>
                 </div>
-                <div class="project-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px;">
-                <section id="projects" style="padding: 60px 30px; background-color: #f8fafc; ">
-                    <h2 style="color: #0056b3; border-left: 5px solid #0056b3; padding-left: 15px; margin-bottom: 40px; ">Featured Projects</h2>
+                 <section id="projects" style="padding: 60px 20px; background-color: #f8fafc;">
+    <h2 style="color: #0056b3; border-left: 5px solid #0056b3; padding-left: 15px; margin-bottom: 40px;">Featured Projects</h2>
 
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; ">
-
-                        <div>
-                            <h3 style="text-align: center; color: #334155; margin-bottom: 20px; border-bottom: 2px solid #0056b3; padding-bottom: 10px; ">Data Science Projects</h3>
-
-                            <div style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; overflow: hidden; border: 1px solid #e2e8f0; ">
-
-                                <div style="padding: 20px; ">
-                                    <h4 style="margin: 0 0 10px 0; color: #0056b3; ">Loan approval Prediction</h4>
-                                    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px; ">
-                                        Developed an end-to-end predictive system to assess credit risk and determine loan eligibility. The project involved extensive Exploratory Data Analysis (EDA), feature engineering, and the implementation of Random Forest and XGBoost classifiers. I utilized
-                                        Pickle for model serialization and FastAPI to create a scalable endpoint for real-time predictions, ensuring a seamless bridge between data science and production-ready software. </p>
-                                    <a href="https://github.com/Marylene78/loan.git " target="_blank " style="text-decoration: none; color: #0056b3; font-weight: bold; font-size: 0.85rem; border: 1px solid #0056b3; padding: 5px 15px; border-radius:
-                        5px; ">Read More (GitHub) ↗</a>
-                                </div>
-                            </div>
-                            <div style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; overflow: hidden; border: 1px solid #e2e8f0; ">
-
-                                <div style="padding: 20px; ">
-                                    <h4 style="margin: 0 0 10px 0; color: #0056b3; ">Used car price prediction</h4>
-                                    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px; ">
-                                        This project is a machine learning-based web application that predicts the price of a used car based on various features like year, mileage, engine size, number of doors, fuel type, and previous owners. The model is trained using XGBoost, which provides
-                                        highly accurate predictions.
-                                    </p>
-                                    <a href="https://github.com/Marylene78/used-car-price-prediction-.git " target="_blank " style="text-decoration: none; color: #0056b3; font-weight: bold; font-size: 0.85rem; border: 1px solid #0056b3; padding: 5px
-                        15px; border-radius: 5px; ">Read More (GitHub) ↗</a>
-                                </div>
-                            </div>
-                            <div style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; overflow: hidden; border: 1px solid #e2e8f0; ">
-
-                                <div style="padding: 20px; ">
-                                    <h4 style="margin: 0 0 10px 0; color: #0056b3; ">Medical Insurance prediction</h4>
-                                    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px; ">
-                                        Medical Insurance Price Prediction The Medical Insurance Price Prediction project is a machine learning model designed to estimate insurance costs based on key personal and lifestyle factors. This project uses a dataset containing information on BMI (Body
-                                        Mass Index), smoking status, and the number of children, among other features. By analyzing these variables, the model predicts insurance premiums, helping individuals and insurers make data-driven decisions
-                                    </p>
-                                    <a href="https://github.com/Marylene78/medical-insurance-price-prediction-.git " target="_blank " style="text-decoration: none; color: #0056b3; font-weight: bold; font-size: 0.85rem; border: 1px solid #0056b3; padding:
-                        5px 15px; border-radius: 5px; ">Read More (GitHub) ↗</a>
-                                </div>
-                            </div>
-                            <div style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; overflow: hidden; border: 1px solid #e2e8f0; ">
-
-                                <div style="padding: 20px; ">
-                                    <h4 style="margin: 0 0 10px 0; color: #0056b3; ">Websites projects</h4>
-                                    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px; ">
-                                        Websites projects
-                                    </p>
-                                    <a href="https://github.com/Marylene78/Expo-web-site.git " target=" _blank " style="text-decoration: none; color: #0056b3; font-weight: bold; font-size: 0.85rem; border: 1px solid #0056b3; padding: 5px 15px; border-radius:
-                        5px; ">Read More (GitHub) ↗</a>
-                                    <a href="https://github.com/Marylene78/nordvision-web.git " target=" _blank " style="text-decoration: none; color: #0056b3; font-weight: bold; font-size: 0.85rem; border: 1px solid #0056b3; padding: 5px 15px; border-radius:
-                        5px; ">Read More (GitHub) ↗</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h3 style="text-align: center; color: #334155; margin-bottom: 20px; border-bottom: 2px solid #0056b3; padding-bottom: 10px; ">Data Analysis Projects</h3>
-
-                            <div style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; overflow: hidden; border: 1px solid #e2e8f0; ">
-                                <img src="sales.jpeg " alt="Power BI Dashboard " style="width: 100%; height: 200px; object-fit: cover; background-color: #eee; ">
-                                <div style="padding: 20px; ">
-                                    <h4 style="margin: 0 0 10px 0; color: #0056b3; ">Sales Executive Dashboard</h4>
-                                    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px; ">
-                                        This project involves the creation of a Power BI dashboard to evaluate global sales performance for a chocolate manufacturer. The analysis processes transactional data to identify key revenue drivers, regional market trends, and sales representative effectiveness.
-                                        The final output is an interactive single-page report that translates raw data into strategic business intelligence.
-                                    </p>
-                                    <a href="https://github.com/Marylene78/Sales-Executive-Dashboard-chocolate-sales.git " target="_blank " style="text-decoration: none; color: #0056b3; font-weight: bold; font-size: 0.85rem; border: 1px solid #0056b3;
-                        padding: 5px 15px; border-radius: 5px; ">Read More (GitHub) ↗</a>
-                                </div>
-                            </div>
-                            <div style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; overflow: hidden; border: 1px solid #e2e8f0; ">
-                                <img src="Hosi .jpeg " alt="Power BI Dashboard " style="width: 100%; height: 200px; object-fit: cover; background-color: #eee; ">
-                                <div style="padding: 20px; ">
-                                    <h4 style="margin: 0 0 10px 0; color: #0056b3; ">Hospital Data analysis</h4>
-                                    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px; ">
-                                        This dashboard transforms raw hospital visit data into clear, actionable visuals. Designed with intuitive slicers/filters for date range, county, and diagnosis — perfect for quick exploration and performance monitoring.
-                                    </p>
-                                    <a href="https://github.com/Marylene78/Hospital-data-analysis.git " target="_blank " style="text-decoration: none; color: #0056b3; font-weight: bold; font-size: 0.85rem; border: 1px solid #0056b3; padding: 5px 15px;
-                        border-radius: 5px; ">Read More (GitHub) ↗</a>
-                                </div>
-                            </div>
-                            <div style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; overflow: hidden; border: 1px solid #e2e8f0; ">
-                                <img src="Movie.jpeg " alt="Power BI Dashboard " style="width: 100%; height: 200px; object-fit: cover; background-color: #eee; ">
-                                <div style="padding: 20px; ">
-                                    <h4 style="margin: 0 0 10px 0; color: #0056b3; ">Movie Revenue VS Budget- TABLEAU</h4>
-                                    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px; ">
-                                        This dashboard compares the budget allocated for the movie and the revenue generated. Majorly shows the movie that did the best.
-                                    </p>
-                                    <a href="https://public.tableau.com/app/profile/marylene.mbugua/viz/MovieBudgetVsrevenue/Sheet1 " target="_blank " style="text-decoration: none; color: #0056b3; font-weight: bold; font-size: 0.85rem; border: 1px solid
-                        #0056b3; padding: 5px 15px; border-radius: 5px; ">Read More (GitHub) ↗</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </section>
+    <div class="project-grid">
+        
+        <div class="project-column">
+            <h3 class="column-title">Data Science & Web Projects</h3>
+            
+            <div class="project-card">
+                <div style="padding: 20px;">
+                    <h4 style="color: #0056b3; margin-top: 0;">Loan approval Prediction</h4>
+                    <p style="font-size: 0.9rem; color: #64748b;">Developed an end-to-end predictive system to assess credit risk and determine loan eligibility. The project involved extensive Exploratory Data Analysis (EDA), feature engineering, and the implementation of Random Forest and XGBoost classifiers. I utilized Pickle for model serialization and FastAPI to create a scalable endpoint for real-time predictions, ensuring a seamless bridge between data science and production-ready software.</p>
+                    <a href="https://github.com/Marylene78/loan.git" target="_blank" class="read-more">Read More (GitHub) ↗</a>
+                </div>
             </div>
-        </section>
 
+            <div class="project-card">
+                <div style="padding: 20px;">
+                    <h4 style="color: #0056b3; margin-top: 0;">Used car price prediction</h4>
+                    <p style="font-size: 0.9rem; color: #64748b;">This project is a machine learning-based web application that predicts the price of a used car based on various features like year, mileage, engine size, number of doors, fuel type, and previous owners. The model is trained using XGBoost, which provides highly accurate predictions.</p>
+                    <a href="https://github.com/Marylene78/used-car-price-prediction-.git" target="_blank" class="read-more">Read More (GitHub) ↗</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div style="padding: 20px;">
+                    <h4 style="color: #0056b3; margin-top: 0;">Websites projects</h4>
+                    <p style="font-size: 0.9rem; color: #64748b;">Custom web development projects showcasing front-end expertise and responsive design.</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <a href="https://github.com/Marylene78/Expo-web-site.git" target="_blank" class="read-more">Expo Site ↗</a>
+                        <a href="https://github.com/Marylene78/nordvision-web.git" target="_blank" class="read-more">NordVision ↗</a>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div class="project-column">
+            <h3 class="column-title">Data Analysis Projects</h3>
+            
+            <div class="project-card">
+                <img src="sales.jpeg" alt="Power BI Dashboard" class="card-img">
+                <div style="padding: 20px;">
+                    <h4 style="color: #0056b3; margin-top: 0;">Sales Executive Dashboard</h4>
+                    <p style="font-size: 0.9rem; color: #64748b;">This project involves the creation of a Power BI dashboard to evaluate global sales performance for a chocolate manufacturer. The analysis processes transactional data to identify key revenue drivers, regional market trends, and sales representative effectiveness. The final output is an interactive single-page report that translates raw data into strategic business intelligence.</p>
+                    <a href="https://github.com/Marylene78/Sales-Executive-Dashboard-chocolate-sales.git" target="_blank" class="read-more">Read More (GitHub) ↗</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="Hosi .jpeg" alt="Power BI Dashboard" class="card-img">
+                <div style="padding: 20px;">
+                    <h4 style="color: #0056b3; margin-top: 0;">Hospital Data analysis</h4>
+                    <p style="font-size: 0.9rem; color: #64748b;">This dashboard transforms raw hospital visit data into clear, actionable visuals. Designed with intuitive slicers/filters for date range, county, and diagnosis — perfect for quick exploration and performance monitoring.</p>
+                    <a href="https://github.com/Marylene78/Hospital-data-analysis.git" target="_blank" class="read-more">Read More (GitHub) ↗</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="Movie.jpeg" alt="Tableau Dashboard" class="card-img">
+                <div style="padding: 20px;">
+                    <h4 style="color: #0056b3; margin-top: 0;">Movie Revenue VS Budget - TABLEAU</h4>
+                    <p style="font-size: 0.9rem; color: #64748b;">This dashboard compares the budget allocated for the movie and the revenue generated. Majorly shows the movie that did the best.</p>
+                    <a href="https://public.tableau.com/app/profile/marylene.mbugua/viz/MovieBudgetVsrevenue/Sheet1" target="_blank" class="read-more">Read More (Tableau) ↗</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
         <script>
 function toggleMenu() {
     const navLinks = document.getElementById('navLinks');
